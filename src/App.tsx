@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Instagram, 
-  MessageCircle, 
-  Mail, 
-  MapPin, 
-  ChevronLeft, 
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Instagram,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ChevronLeft,
   ChevronRight,
   Clock,
   Heart,
   Diamond,
   User,
-  Globe
-} from 'lucide-react';
+  Globe,
+} from "lucide-react";
 
 // --- Components ---
 
@@ -26,9 +26,9 @@ const Logo = ({ className = "w-24 h-24" }: { className?: string }) => (
     {/* Recreating the four-heart clover logo */}
     <div className="grid grid-cols-2 gap-0.5 transform rotate-45">
       {[0, 1, 2, 3].map((i) => (
-        <Heart 
-          key={i} 
-          className="w-full h-full text-gold fill-gold" 
+        <Heart
+          key={i}
+          className="w-full h-full text-gold fill-gold"
           strokeWidth={1}
         />
       ))}
@@ -41,7 +41,7 @@ const Countdown = () => {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -55,9 +55,11 @@ const Countdown = () => {
 
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        hours: Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        ),
         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
     }, 1000);
 
@@ -69,10 +71,16 @@ const Countdown = () => {
       {Object.entries(timeLeft).map(([label, value]) => (
         <div key={label} className="flex flex-col items-center">
           <div className="text-3xl md:text-5xl font-serif text-gold mb-1">
-            {value.toString().padStart(2, '0')}
+            {value.toString().padStart(2, "0")}
           </div>
           <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/50">
-            {label === 'days' ? 'Dias' : label === 'hours' ? 'Horas' : label === 'minutes' ? 'Minutos' : 'Segundos'}
+            {label === "days"
+              ? "Dias"
+              : label === "hours"
+                ? "Horas"
+                : label === "minutes"
+                  ? "Minutos"
+                  : "Segundos"}
           </div>
         </div>
       ))}
@@ -82,17 +90,18 @@ const Countdown = () => {
 
 const Gallery = () => {
   const images = [
-    "https://picsum.photos/seed/jewelry1/800/1000",
-    "https://picsum.photos/seed/jewelry2/800/1000",
-    "https://picsum.photos/seed/jewelry3/800/1000",
-    "https://picsum.photos/seed/jewelry4/800/1000",
-    "https://picsum.photos/seed/jewelry5/800/1000",
+    "/assets/img/cat-han-Ks6wd1Zyf1o-unsplash.jpg",
+    "/assets/img/jasmin-chew-UbeNYvk6ED0-unsplash.jpg",
+    "/assets/img/kateryna-hliznitsova-ceSCZzjTReg-unsplash.jpg",
+    "/assets/img/kateryna-hliznitsova-pjrPWwwYx1I-unsplash.jpg",
+    "/assets/img/segal-jewelry-NsH-CvU0deg-unsplash.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const prev = () =>
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl border border-gold/20 group">
@@ -112,13 +121,13 @@ const Gallery = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
 
-      <button 
+      <button
         onClick={prev}
         className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-gold border border-gold/30 opacity-0 group-hover:opacity-100 transition-opacity"
       >
         <ChevronLeft size={24} />
       </button>
-      <button 
+      <button
         onClick={next}
         className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-gold border border-gold/30 opacity-0 group-hover:opacity-100 transition-opacity"
       >
@@ -127,9 +136,9 @@ const Gallery = () => {
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
         {images.map((_, i) => (
-          <div 
+          <div
             key={i}
-            className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentIndex ? 'bg-gold w-4' : 'bg-white/30'}`}
+            className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentIndex ? "bg-gold w-4" : "bg-white/30"}`}
           />
         ))}
       </div>
@@ -140,7 +149,7 @@ const Gallery = () => {
 // --- Main App ---
 
 export default function App() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -151,7 +160,7 @@ export default function App() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setEmail('');
+      setEmail("");
     }, 1500);
   };
 
@@ -166,11 +175,11 @@ export default function App() {
         >
           <Logo className="w-16 h-16 md:w-20 md:h-20" />
         </motion.div>
-        
+
         <nav className="flex gap-6">
-          <a 
-            href="https://instagram.com/ddjoiasesemijoias" 
-            target="_blank" 
+          <a
+            href="https://instagram.com/ddjoiasesemijoias"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-white/60 hover:text-gold transition-colors flex items-center gap-2 text-sm uppercase tracking-widest"
           >
@@ -197,16 +206,19 @@ export default function App() {
             >
               <h1 className="text-4xl md:text-7xl font-serif leading-tight mb-8">
                 <span className="block text-white/90">A tradição da alta</span>
-                <span className="gold-text-gradient italic">joalheria artesanal</span>
+                <span className="gold-text-gradient italic">
+                  joalheria artesanal
+                </span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Há 34 anos encantando com joias belas, sofisticadas e exclusivas. 
-                Nossa nova experiência digital está chegando para transformar seus desejos em realidade.
+                Há 34 anos encantando com joias belas, sofisticadas e
+                exclusivas. Nossa nova experiência digital está chegando para
+                transformar seus desejos em realidade.
               </p>
 
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <a 
+                <a
                   href="https://wa.me/5513991320202"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -226,7 +238,9 @@ export default function App() {
         <section className="py-24 px-6 bg-zinc-950/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-serif mb-4">Galeria de Antecipação</h2>
+              <h2 className="text-3xl md:text-5xl font-serif mb-4">
+                Galeria de Antecipação
+              </h2>
               <div className="w-24 h-px bg-gold mx-auto opacity-50" />
             </div>
             <Gallery />
@@ -243,15 +257,17 @@ export default function App() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative">
-                <img 
-                  src="https://picsum.photos/seed/janete/600/800" 
-                  alt="Janete Duraes de Souza" 
+                <img
+                  src="https://picsum.photos/seed/janete/600/800"
+                  alt="Janete Duraes de Souza"
                   className="rounded-2xl border border-gold/20 grayscale hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-black border border-gold/30 p-6 rounded-xl hidden md:block">
                   <div className="text-gold font-serif text-4xl mb-1">34</div>
-                  <div className="text-[10px] uppercase tracking-widest text-white/50">Anos de Experiência</div>
+                  <div className="text-[10px] uppercase tracking-widest text-white/50">
+                    Anos de Experiência
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -263,14 +279,21 @@ export default function App() {
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-6"
             >
-              <h2 className="text-3xl md:text-5xl font-serif">A Arte de Janete Duraes</h2>
+              <h2 className="text-3xl md:text-5xl font-serif">
+                A Arte de Janete Duraes
+              </h2>
               <p className="text-white/70 leading-relaxed text-lg">
-                Liderada pela ourives autodidata Janete Duraes de Souza, a D&D Joias é o resultado de mais de três décadas de dedicação à perfeição.
+                Liderada pela ourives autodidata Janete Duraes de Souza, a D&D
+                Joias é o resultado de mais de três décadas de dedicação à
+                perfeição.
               </p>
               <p className="text-white/70 leading-relaxed">
-                Nosso foco é a joalheria artesanal autoral, onde cada peça é única e carrega uma história. Oferecemos atendimento personalizado para mulheres, homens e crianças, atendendo clientes em todo o Brasil e no exterior.
+                Nosso foco é a joalheria artesanal autoral, onde cada peça é
+                única e carrega uma história. Oferecemos atendimento
+                personalizado para mulheres, homens e crianças, atendendo
+                clientes em todo o Brasil e no exterior.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div className="flex items-center gap-3 text-sm text-white/60">
                   <Diamond size={16} className="text-gold" />
@@ -296,32 +319,44 @@ export default function App() {
         {/* Contact/News Section */}
         <section className="py-24 px-6 bg-zinc-950/80 border-y border-gold/10">
           <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Seja o primeiro a saber</h2>
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">
+              Seja o primeiro a saber
+            </h2>
             <p className="text-white/60 mb-10">
-              Deixe seu e-mail para receber um convite exclusivo para o nosso lançamento online.
+              Deixe seu e-mail para receber um convite exclusivo para o nosso
+              lançamento online.
             </p>
 
-            <form onSubmit={handleSubscribe} className="flex flex-col md:flex-row gap-4 mb-12">
-              <input 
-                type="email" 
+            <form
+              onSubmit={handleSubscribe}
+              className="flex flex-col md:flex-row gap-4 mb-12"
+            >
+              <input
+                type="email"
                 required
                 placeholder="Seu melhor e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-grow bg-black border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-gold transition-colors text-white"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting || submitted}
                 className="gold-gradient px-8 py-4 rounded-full text-black font-semibold disabled:opacity-50 transition-all"
               >
-                {isSubmitting ? 'Enviando...' : submitted ? 'Inscrito!' : 'Me avisar'}
+                {isSubmitting
+                  ? "Enviando..."
+                  : submitted
+                    ? "Inscrito!"
+                    : "Me avisar"}
               </button>
             </form>
 
             <div className="flex flex-col items-center gap-4">
-              <p className="text-sm text-white/40 uppercase tracking-widest">Ou faça seu pedido agora</p>
-              <a 
+              <p className="text-sm text-white/40 uppercase tracking-widest">
+                Ou faça seu pedido agora
+              </p>
+              <a
                 href="https://wa.me/5513991320202"
                 className="text-gold hover:text-gold-light transition-colors flex items-center gap-2 font-medium"
               >
@@ -337,29 +372,35 @@ export default function App() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-5xl font-serif mb-6">Nova Localização</h2>
+                <h2 className="text-3xl md:text-5xl font-serif mb-6">
+                  Nova Localização
+                </h2>
                 <p className="text-white/70 mb-8 leading-relaxed">
-                  Estamos mudando para um novo espaço em Mongaguá, em parceria com a <strong>Top 20 Modas</strong>. 
-                  Um ambiente preparado para oferecer ainda mais conforto e exclusividade no seu atendimento.
+                  Estamos mudando para um novo espaço em Mongaguá, em parceria
+                  com a <strong>Top 20 Modas</strong>. Um ambiente preparado
+                  para oferecer ainda mais conforto e exclusividade no seu
+                  atendimento.
                 </p>
-                
+
                 <div className="flex items-start gap-4 text-white/80">
                   <MapPin className="text-gold shrink-0 mt-1" />
                   <div>
                     <p className="font-medium">Av. Monteiro Lobato, 9970</p>
-                    <p className="text-white/50">Agenor de Campos, Mongaguá - SP</p>
+                    <p className="text-white/50">
+                      Agenor de Campos, Mongaguá - SP
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="aspect-video rounded-2xl overflow-hidden border border-gold/20 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                <iframe 
+                <iframe
                   src="https://www.google.com/maps?q=Av.%20Monteiro%20Lobato,%209970,%20Agenor%20de%20Campos,%20Mongagu%C3%A1%20-%20SP&output=embed"
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={true} 
-                  loading="lazy" 
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Localização D&D Joias"
                 />
@@ -380,24 +421,24 @@ export default function App() {
           </div>
 
           <div className="flex gap-8">
-            <a 
-              href="https://instagram.com/ddjoiasesemijoias" 
-              target="_blank" 
+            <a
+              href="https://instagram.com/ddjoiasesemijoias"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-gold transition-colors"
             >
               <Instagram size={24} />
             </a>
-            <a 
-              href="https://wa.me/5513991320202" 
-              target="_blank" 
+            <a
+              href="https://wa.me/5513991320202"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-gold transition-colors"
             >
               <MessageCircle size={24} />
             </a>
-            <a 
-              href="mailto:contato@ddjoias.com.br" 
+            <a
+              href="mailto:contato@ddjoias.com.br"
               className="text-white/40 hover:text-gold transition-colors"
             >
               <Mail size={24} />
