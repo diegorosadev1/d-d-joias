@@ -12,7 +12,6 @@ import {
   MapPin,
   ChevronLeft,
   ChevronRight,
-  Clock,
   Heart,
   Diamond,
   User,
@@ -229,7 +228,6 @@ export default function App() {
                 </a>
               </div>
 
-              <Countdown />
             </motion.div>
           </div>
         </section>
@@ -258,7 +256,7 @@ export default function App() {
             >
               <div className="relative">
                 <img
-                  src="https://picsum.photos/seed/janete/600/800"
+                  src="public\assets\img\nexaro-studio-CZ_xnWXvaYw-unsplash.jpg"
                   alt="Janete Duraes de Souza"
                   className="rounded-2xl border border-gold/20 grayscale hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
