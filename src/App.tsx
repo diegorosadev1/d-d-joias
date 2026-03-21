@@ -255,7 +255,7 @@ export default function App() {
             >
               <div className="relative">
                 <img
-                  src="public\assets\img\nexaro-studio-CZ_xnWXvaYw-unsplash.jpg"
+                  src="\assets\img\nexaro-studio-CZ_xnWXvaYw-unsplash.jpg"
                   alt="Janete Duraes de Souza"
                   className="rounded-2xl border border-gold/20 grayscale hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
