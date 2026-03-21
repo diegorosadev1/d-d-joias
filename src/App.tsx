@@ -218,7 +218,7 @@ export default function App() {
 
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <a
-                  href="https://wa.me/5513991320202"
+                  href="https://wa.me/551996433292?text=Olá! Gostaria de saber mais sobre as joias artesanais."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gold-gradient px-8 py-4 rounded-full text-black font-semibold flex items-center gap-3 hover:scale-105 transition-transform shadow-lg shadow-gold/20"
@@ -227,7 +227,6 @@ export default function App() {
                   Falar no WhatsApp
                 </a>
               </div>
-
             </motion.div>
           </div>
         </section>
