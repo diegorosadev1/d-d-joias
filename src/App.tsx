@@ -89,11 +89,11 @@ const Countdown = () => {
 
 const Gallery = () => {
   const images = [
-    "/assets/img/cat-han-Ks6wd1Zyf1o-unsplash.jpg",
-    "/assets/img/jasmin-chew-UbeNYvk6ED0-unsplash.jpg",
-    "/assets/img/kateryna-hliznitsova-ceSCZzjTReg-unsplash.jpg",
-    "/assets/img/kateryna-hliznitsova-pjrPWwwYx1I-unsplash.jpg",
-    "/assets/img/segal-jewelry-NsH-CvU0deg-unsplash.jpg",
+    "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1000",
+    "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1000",
+    "https://images.unsplash.com/photo-1573408302185-91275f96399c?auto=format&fit=crop&q=80&w=1000",
+    "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1000",
+    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1000",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -231,6 +231,14 @@ export default function App() {
           </div>
         </section>
 
+        {/* Countdown Section */}
+        <section className="py-12 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-gold mb-4">Lançamento em breve</p>
+            <Countdown />
+          </div>
+        </section>
+
         {/* Gallery Section */}
         <section className="py-24 px-6 bg-zinc-950/50">
           <div className="max-w-6xl mx-auto">
@@ -255,7 +263,7 @@ export default function App() {
             >
               <div className="relative">
                 <img
-                  src="\assets\img\nexaro-studio-CZ_xnWXvaYw-unsplash.jpg"
+                  src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&q=80&w=800"
                   alt="Janete Duraes de Souza"
                   className="rounded-2xl border border-gold/20 grayscale hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -446,3 +454,4 @@ export default function App() {
     </div>
   );
 }
+
